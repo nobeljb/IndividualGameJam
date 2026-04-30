@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://w1cf6ka2mu8g"]
+
+[ext_resource type="Script" uid="uid://b3m2yuvwqvf3m" path="res://script/exit_gate.gd" id="1_gate"]
+[ext_resource type="Texture2D" uid="uid://c8owpoucpntbb" path="res://assets/kenney_platformerpack/PNG/Tiles/doorClosed_mid.png" id="2_closed"]
+[ext_resource type="Texture2D" uid="uid://d2oqfeki3y7p7" path="res://assets/kenney_platformerpack/PNG/Tiles/doorOpen_mid.png" id="3_open"]
+[ext_resource type="Texture2D" uid="uid://diwyhpnydh8e" path="res://assets/kenney_platformerpack/PNG/Tiles/signExit.png" id="4_sign"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gate"]
+size = Vector2(92, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_prompt"]
+size = Vector2(110, 127.5)
+
+[node name="ExitGate" type="Node2D" unique_id=890691107]
+script = ExtResource("1_gate")
+
+[node name="ClosedSprite" type="Sprite2D" parent="." unique_id=302197980]
+position = Vector2(0, -32)
+texture = ExtResource("2_closed")
+
+[node name="OpenSprite" type="Sprite2D" parent="." unique_id=2018375523]
+visible = false
+position = Vector2(0, -32)
+texture = ExtResource("3_open")
+
+[node name="SignSprite" type="Sprite2D" parent="." unique_id=1903065493]
+position = Vector2(-106, -26.000015)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("4_sign")
+
+[node name="Blocker" type="StaticBody2D" parent="." unique_id=1692729091]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blocker" unique_id=813498859]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_gate")
+
+[node name="PromptArea" type="Area2D" parent="." unique_id=1143506784]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PromptArea" unique_id=77084321]
+position = Vector2(-9, -32)
+shape = SubResource("RectangleShape2D_prompt")
+
+[connection signal="body_entered" from="PromptArea" to="." method="_on_prompt_area_body_entered"]
+[connection signal="body_exited" from="PromptArea" to="." method="_on_prompt_area_body_exited"]

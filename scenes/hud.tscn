@@ -1,0 +1,160 @@
+[gd_scene format=3 uid="uid://bpvc808kxuif"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stats"]
+bg_color = Color(0.0901961, 0.129412, 0.109804, 0.86)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.776471, 0.737255, 0.541176, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prompt"]
+bg_color = Color(0.121569, 0.168627, 0.145098, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.698039, 0.635294, 0.454902, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_result"]
+bg_color = Color(0.0509804, 0.0823529, 0.0705882, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.835294, 0.764706, 0.560784, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[node name="HUD" type="CanvasLayer" unique_id=567221305]
+
+[node name="StatsPanel" type="PanelContainer" parent="." unique_id=503467053]
+offset_left = 18.0
+offset_top = 18.0
+offset_right = 370.0
+offset_bottom = 206.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_stats")
+
+[node name="MarginContainer" type="MarginContainer" parent="StatsPanel" unique_id=1185361379]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 14
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StatsPanel/MarginContainer" unique_id=1629058314]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="TitleLabel" type="Label" parent="StatsPanel/MarginContainer/VBoxContainer" unique_id=498404048]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Beyond Nginep's End"
+
+[node name="StarsLabel" type="Label" parent="StatsPanel/MarginContainer/VBoxContainer" unique_id=355442012]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Fragmen: 0 / 3"
+
+[node name="LivesLabel" type="Label" parent="StatsPanel/MarginContainer/VBoxContainer" unique_id=1085964007]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Nyawa: 3"
+
+[node name="CampLabel" type="Label" parent="StatsPanel/MarginContainer/VBoxContainer" unique_id=987335638]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Safe Spot: Belum aktif"
+
+[node name="ObjectiveLabel" type="Label" parent="StatsPanel/MarginContainer/VBoxContainer" unique_id=1190602572]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "Tujuan: Kumpulkan 3 fragmen bintang."
+autowrap_mode = 3
+
+[node name="PromptPanel" type="PanelContainer" parent="." unique_id=1866948042]
+visible = false
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 1.0
+anchor_right = 0.8
+anchor_bottom = 1.0
+offset_top = -96.0
+offset_bottom = -20.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_prompt")
+
+[node name="MarginContainer" type="MarginContainer" parent="PromptPanel" unique_id=1976679323]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 12
+
+[node name="PromptLabel" type="Label" parent="PromptPanel/MarginContainer" unique_id=1144297383]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ResultPanel" type="PanelContainer" parent="." unique_id=264118116]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -150.0
+offset_right = 220.0
+offset_bottom = 150.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_result")
+
+[node name="MarginContainer" type="MarginContainer" parent="ResultPanel" unique_id=1063812636]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ResultPanel/MarginContainer" unique_id=337090903]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="ResultTitle" type="Label" parent="ResultPanel/MarginContainer/VBoxContainer" unique_id=945526970]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Perjalanan Dimulai"
+horizontal_alignment = 1
+
+[node name="ResultBody" type="Label" parent="ResultPanel/MarginContainer/VBoxContainer" unique_id=279085749]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Ringkasan perjalanan."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ButtonRow" type="HBoxContainer" parent="ResultPanel/MarginContainer/VBoxContainer" unique_id=424210773]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="RetryButton" type="Button" parent="ResultPanel/MarginContainer/VBoxContainer/ButtonRow" unique_id=1616786059]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Coba Lagi"
+
+[node name="MenuButton" type="Button" parent="ResultPanel/MarginContainer/VBoxContainer/ButtonRow" unique_id=2087811503]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Menu Utama"

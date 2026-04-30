@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cyryphse0qqvh"]
+
+[ext_resource type="Texture2D" uid="uid://bj1eycweh4qwb" path="res://assets/kenney_abstract-platformer/PNG/Other/plantStem_horizontal.png" id="1_axdvg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_axdvg"]
+size = Vector2(128, 9)
+
+[node name="Platform" type="AnimatableBody2D" unique_id=1999966087]
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=69792712]
+texture = ExtResource("1_axdvg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=659899831]
+position = Vector2(64, 0)
+texture = ExtResource("1_axdvg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=131648436]
+position = Vector2(32, 0.5)
+shape = SubResource("RectangleShape2D_axdvg")
+one_way_collision = true

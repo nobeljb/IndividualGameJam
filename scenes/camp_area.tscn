@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://s21icryx6ovv"]
+
+[ext_resource type="Script" uid="uid://bruuvvp6ssi4g" path="res://script/camp_area.gd" id="1_camp"]
+[ext_resource type="Texture2D" uid="uid://ck0ig8j5crb78" path="res://assets/kenney_platformerpack/PNG/Tiles/signRight.png" id="2_sign"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_camp"]
+size = Vector2(121.5, 117)
+
+[node name="CampArea" type="Area2D" unique_id=910688012]
+collision_mask = 2
+script = ExtResource("1_camp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1921434456]
+position = Vector2(-32, -30.000002)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_sign")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=521652979]
+position = Vector2(2.25, -31.5)
+shape = SubResource("RectangleShape2D_camp")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

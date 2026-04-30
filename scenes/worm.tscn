@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://dbqcvskc307f5"]
+
+[ext_resource type="Texture2D" uid="uid://bop1k0vj7up0w" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_enemies.png" id="1_fb06d"]
+[ext_resource type="Script" uid="uid://mm4oemh0vtoe" path="res://script/worm.gd" id="1_lley5"]
+[ext_resource type="PackedScene" uid="uid://cfw657usyt4us" path="res://scenes/killzone.tscn" id="2_lley5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttset"]
+atlas = ExtResource("1_fb06d")
+region = Rect2(0, 272, 136, 136)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdamb"]
+atlas = ExtResource("1_fb06d")
+region = Rect2(0, 544, 136, 136)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aodjv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttset")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tdamb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7fd0"]
+size = Vector2(116, 55)
+
+[node name="Worm" type="Node2D" unique_id=272587578]
+script = ExtResource("1_lley5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=669522533]
+position = Vector2(3, -49)
+sprite_frames = SubResource("SpriteFrames_aodjv")
+autoplay = "default"
+frame_progress = 0.33879244
+
+[node name="Killzone" parent="." unique_id=1080094409 instance=ExtResource("2_lley5")]
+position = Vector2(3, -50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=1637273880]
+position = Vector2(-4, 22.5)
+shape = SubResource("RectangleShape2D_i7fd0")
+
+[node name="RayCastRight" type="RayCast2D" parent="." unique_id=770158406]
+position = Vector2(-1, -28)
+target_position = Vector2(64, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="." unique_id=907183255]
+position = Vector2(-1, -28)
+target_position = Vector2(-64, 0)

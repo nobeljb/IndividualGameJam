@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://mrbra0yxpvhj"]
+
+[ext_resource type="AudioStream" uid="uid://fubwcdxuerhx" path="res://sound/178833__trebblofang__abstract_background_atmosphere.wav" id="1_aa5yj"]
+
+[node name="BackgroundSound" type="AudioStreamPlayer2D" unique_id=2146753214]
+stream = ExtResource("1_aa5yj")
+autoplay = true
+bus = &"Music"
