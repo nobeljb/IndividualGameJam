@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://m1ynjmacj2sc"]
 
 [ext_resource type="AudioStream" uid="uid://g2vvyx71pgnq" path="res://sound/BGM.wav" id="1_05ggv"]
+[ext_resource type="Script" path="res://script/music_player.gd" id="2_script"]
 
 [node name="Music" type="AudioStreamPlayer" unique_id=1722367869]
 stream = ExtResource("1_05ggv")
 autoplay = true
 bus = &"Music"
+script = ExtResource("2_script")

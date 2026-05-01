@@ -12,13 +12,13 @@ func _process(_delta: float) -> void:
 		return
 
 	if game_manager.can_craft_safe_spot():
-		game_manager.set_context_prompt("Tekan C untuk craft safe spot: Nginep Santai di tengah perjalanan.")
+		game_manager.set_context_prompt("Tempat ini terasa tenang. Tekan C untuk create safe spot.")
 		if Input.is_action_just_pressed("craft_safe_spot"):
 			game_manager.craft_safe_spot()
 	elif game_manager.has_safe_spot():
-		game_manager.set_context_prompt("Safe spot sudah aktif. Lanjutkan perjalanan.")
+		game_manager.set_context_prompt("Tempat singgah ini sudah siap.")
 	else:
-		game_manager.set_context_prompt("Kumpulkan 3 fragmen bintang dulu.")
+		game_manager.set_context_prompt("Tempat ini terasa tenang. Namun seperti ada yang ketinggalan.")
 
 
 func _on_body_entered(body: Node2D) -> void:

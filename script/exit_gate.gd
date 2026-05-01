@@ -30,7 +30,7 @@ func _on_prompt_area_body_entered(body: Node2D) -> void:
 	if _is_open:
 		game_manager.finish_level()
 	else:
-		game_manager.set_context_prompt("Gerbang masih terkunci. Tekan sakelar dengan tubuhmu atau tahan dengan peti.")
+		game_manager.set_context_prompt("Gerbang ini belum mau menyambutmu.")
 
 
 func _on_prompt_area_body_exited(body: Node2D) -> void:

@@ -41,7 +41,9 @@ Jika nyawa habis, permainan masuk ke end screen kalah. Jika safe spot sudah akti
 - `Win`: pemain mencapai pintu akhir saat gerbang terbuka
 - `Lose`: nyawa pemain habis
 
-Kedua hasil tersebut sekarang memakai scene ending terpisah dengan tombol `Coba Lagi` dan `Menu Utama`.
+Kedua hasil tersebut sekarang memakai scene ending terpisah.
+- Saat `Win`: tombol `Menu Utama` dan `Keluar Game`
+- Saat `Lose`: tombol `Coba Lagi` dan `Menu Utama`
 
 ## Diversifier Checklist
 
@@ -82,5 +84,12 @@ Kedua hasil tersebut sekarang memakai scene ending terpisah dengan tombol `Coba 
 - `script/game_manager.gd`: state permainan, objective, respawn, dan flow ending
 - `script/floor_switch.gd`: pressure switch on/off
 - `script/game_flow.gd`: state antar-scene untuk end screen
+- `script/music_player.gd`: controller musik default dan musik kemenangan
 - `script/player.gd`: movement player
 
+## Credits
+
+- Asset visual: https://kenney.nl/
+- `love technohouse & peace` by frankum -- https://freesound.org/s/401828/ -- License: Attribution 4.0
+- `Medieval Flute Riff` by f-r-a-g-i-l-e -- https://freesound.org/s/506265/ -- License: Creative Commons 0
+- `Powerup 09.wav` by LilMati -- https://freesound.org/s/523655/ -- License: Creative Commons 0

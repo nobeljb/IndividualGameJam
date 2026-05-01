@@ -7,6 +7,9 @@ func _ready() -> void:
 	var game_flow: GameFlowState = get_node("/root/GameFlow") as GameFlowState
 	if game_flow != null:
 		game_flow.clear_end_result()
+	var music_player: MusicPlayer = get_node("/root/Music") as MusicPlayer
+	if music_player != null:
+		music_player.play_default_theme()
 	$CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StartButton.grab_focus()
 
 

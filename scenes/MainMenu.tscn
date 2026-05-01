@@ -78,7 +78,7 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(360, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
-text = "Fantasy chill platformer: kumpulkan fragmen, craft safe spot, lalu temukan spot istirahat terbaik."
+text = "Perjalanan santai di dunia fantasi, dengan sedikit ruang untuk berhenti, bernapas, dan mendengarkan sekitar."
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -87,7 +87,7 @@ custom_minimum_size = Vector2(420, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.835294, 0.764706, 0.560784, 1)
 theme_override_font_sizes/font_size = 16
-text = "Ambil 3 fragmen -> tekan C di camp -> dorong peti ke sakelar -> buka gerbang."
+text = "Kadang perjalanan baru terasa pas setelah kamu sempat singgah sejenak."
 horizontal_alignment = 1
 autowrap_mode = 3
 

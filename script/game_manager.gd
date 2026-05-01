@@ -30,6 +30,9 @@ func _ready() -> void:
 	add_to_group("game_manager")
 	lives = starting_lives
 	spawn_position = player.global_position
+	var music_player: MusicPlayer = get_node("/root/Music") as MusicPlayer
+	if music_player != null:
+		music_player.play_default_theme()
 	update_hud()
 
 
@@ -59,7 +62,7 @@ func craft_safe_spot() -> void:
 	root.add_child(safe_spot)
 	safe_spot.global_position = camp_spawn.global_position
 	set_checkpoint(camp_spawn.global_position + Vector2(0, -36))
-	set_context_prompt("Safe spot aktif. Rest charm rigidbody jatuh dan menjaga titik nginepmu.")
+	set_context_prompt("Tempat singgah ini kini bisa kau andalkan.")
 	update_hud()
 
 
@@ -102,8 +105,6 @@ func set_puzzle_solved(is_solved: bool = true) -> void:
 	if exit_gate != null:
 		exit_gate.set_open(puzzle_solved)
 	if puzzle_solved:
-		set_context_prompt("Gerbang terbuka selama sakelar ditekan.")
-	elif context_prompt == "Gerbang terbuka selama sakelar ditekan.":
 		clear_context_prompt()
 	update_hud()
 
@@ -151,11 +152,11 @@ func update_hud() -> void:
 func _get_objective_text() -> String:
 	if not checkpoint_active:
 		if stars < stars_needed_for_camp:
-			return "Kumpulkan 3 fragmen bintang."
-		return "Pergi ke area kemah dan tekan C untuk Nginep Santai."
+			return "Ada sesuatu yang berguna tersebar di awal perjalanan."
+		return "Tempat singgah sepertinya menarik."
 	if not puzzle_solved:
-		return "Tahan sakelar dengan peti atau pijakanmu untuk membuka gerbang."
-	return "Masuk ke gerbang akhir untuk menyelesaikan perjalanan."
+		return "Masih ada sesuatu yang menahan langkahmu."
+	return "Akhir dari perjalanan telah terbuka."
 
 
 func _show_result(did_win: bool) -> void:
@@ -168,14 +169,17 @@ func _show_result(did_win: bool) -> void:
 	var result_body: String = ""
 
 	if did_win:
+		var music_player: MusicPlayer = get_node("/root/Music") as MusicPlayer
+		if music_player != null:
+			music_player.play_victory_theme()
 		result_title = "Nginep Tercapai"
-		result_body = "Perjalanan fantasy chill selesai: fragmen terkumpul, safe spot berdiri, dan gerbang akhir terbuka."
+		result_body = "Perjalananmu akhirnya menemukan ritmenya sendiri, dan ujung jalan pun menyambutmu."
 	else:
 		result_title = "Perjalanan Berakhir"
 		if checkpoint_active:
-			result_body = "Nyawamu habis sebelum mencapai ujung perjalanan. Safe spot terakhir siap membantumu mencoba lagi."
+			result_body = "Langkahmu terhenti sejenak, tetapi tempat singgah terakhir masih menunggumu."
 		else:
-			result_body = "Nyawamu habis sebelum sempat membangun safe spot. Coba kumpulkan fragmen lebih cepat dan lanjutkan perjalanan."
+			result_body = "Perjalananmu terhenti sebelum menemukan tempat yang benar-benar aman."
 
 	var game_flow: GameFlowState = get_node("/root/GameFlow") as GameFlowState
 	if game_flow != null:

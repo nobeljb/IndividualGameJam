@@ -65,7 +65,7 @@ text = "Beyond Nginep's End"
 layout_mode = 2
 theme_override_colors/font_color = Color(0.835294, 0.764706, 0.560784, 1)
 theme_override_font_sizes/font_size = 15
-text = "Fantasy chill | C: craft safe spot"
+text = "Fantasy chill | dengarkan petunjuk di sekitar"
 
 [node name="StarsLabel" type="Label" parent="StatsPanel/MarginContainer/VBoxContainer" unique_id=355442012]
 layout_mode = 2
@@ -86,7 +86,7 @@ text = "Safe Spot: Belum aktif"
 custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
 theme_override_font_sizes/font_size = 17
-text = "Tujuan: Kumpulkan 3 fragmen bintang."
+text = "Tujuan: Ikuti rasa penasaranmu."
 autowrap_mode = 3
 
 [node name="PromptPanel" type="PanelContainer" parent="." unique_id=1866948042]

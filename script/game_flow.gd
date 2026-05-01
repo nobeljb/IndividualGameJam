@@ -10,7 +10,7 @@ var stars_collected: int = 0
 var lives_left: int = 0
 var safe_spot_built: bool = false
 var summary_title: String = "Perjalanan Belum Dimulai"
-var summary_body: String = "Masuk ke dunia Beyond Nginep's End untuk memulai perjalananmu."
+var summary_body: String = "Sebuah jalan tenang menunggu untuk dijelajahi."
 
 
 func set_end_result(new_did_win: bool, new_stars_collected: int, new_lives_left: int, new_safe_spot_built: bool, new_summary_title: String, new_summary_body: String) -> void:
@@ -28,7 +28,7 @@ func clear_end_result() -> void:
 	lives_left = 0
 	safe_spot_built = false
 	summary_title = "Perjalanan Belum Dimulai"
-	summary_body = "Masuk ke dunia Beyond Nginep's End untuk memulai perjalananmu."
+	summary_body = "Sebuah jalan tenang menunggu untuk dijelajahi."
 
 
 func open_end_screen() -> void:

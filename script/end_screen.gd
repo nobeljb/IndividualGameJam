@@ -19,6 +19,8 @@ const LOSE_ART := preload("res://assets/kenney_platformerpack/PNG/Tiles/doorClos
 @onready var retry_button: Button = $MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer/ButtonRow/RetryButton as Button
 @onready var menu_button: Button = $MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer/ButtonRow/MenuButton as Button
 
+var _showing_win_result := false
+
 
 func _ready() -> void:
 	var game_flow: GameFlowState = get_node("/root/GameFlow") as GameFlowState
@@ -33,21 +35,26 @@ func _apply_result(game_flow: GameFlowState) -> void:
 	if game_flow == null:
 		return
 
+	_showing_win_result = game_flow.did_win
 	var accent_color: Color = Color(0.835294, 0.764706, 0.560784, 1.0)
 	if game_flow.did_win:
 		backdrop.texture = WIN_BACKGROUND
 		backdrop_tint.color = Color(0.058824, 0.133333, 0.117647, 0.62)
 		hero_art.texture = WIN_ART
 		badge_label.text = "Perjalanan Selesai"
-		recap_label.text = "Fragmen bintang terkumpul, safe spot terbangun, dan gerbang akhir berhasil kamu lewati."
+		recap_label.text = "Beberapa hal akhirnya jatuh pada tempatnya."
 		accent_color = Color(0.921569, 0.85098, 0.6, 1.0)
+		retry_button.text = "Menu Utama"
+		menu_button.text = "Keluar Game"
 	else:
 		backdrop.texture = LOSE_BACKGROUND
 		backdrop_tint.color = Color(0.117647, 0.0627451, 0.101961, 0.72)
 		hero_art.texture = LOSE_ART
 		badge_label.text = "Singgah Dulu"
-		recap_label.text = "Ritmenya sudah terbentuk. Coba lagi, bangun momentum, lalu buka gerbang itu saat semuanya sudah siap."
+		recap_label.text = "Arahnya sudah terasa, hanya ritmenya yang belum pas."
 		accent_color = Color(0.964706, 0.623529, 0.611765, 1.0)
+		retry_button.text = "Coba Lagi"
+		menu_button.text = "Menu Utama"
 
 	title_label.text = game_flow.summary_title
 	body_label.text = game_flow.summary_body
@@ -73,11 +80,20 @@ func _play_intro() -> void:
 
 func _on_retry_button_pressed() -> void:
 	var game_flow: GameFlowState = get_node("/root/GameFlow") as GameFlowState
-	if game_flow != null:
+	if game_flow == null:
+		return
+
+	if _showing_win_result:
+		game_flow.open_main_menu()
+	else:
 		game_flow.restart_level()
 
 
 func _on_menu_button_pressed() -> void:
+	if _showing_win_result:
+		get_tree().quit()
+		return
+
 	var game_flow: GameFlowState = get_node("/root/GameFlow") as GameFlowState
 	if game_flow != null:
 		game_flow.open_main_menu()
