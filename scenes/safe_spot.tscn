@@ -1,22 +1,43 @@
 [gd_scene format=3 uid="uid://85ifji6d68j8"]
 
 [ext_resource type="Texture2D" uid="uid://j6l0pf8gruxu" path="res://assets/kenney_abstract-platformer/PNG/Other/flagGreen_up.png" id="2_flag"]
+[ext_resource type="Script" uid="uid://bfofbxui4kfpp" path="res://script/safe_spot.gd" id="2_script"]
+[ext_resource type="Texture2D" uid="uid://begtxq6v24mi0" path="res://assets/kenney_platformerpack/PNG/Items/gemBlue.png" id="5_gem"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_safe_spot"]
 size = Vector2(54, 55.5)
 
-[node name="SafeSpot" type="RigidBody2D" unique_id=1014013068]
-position = Vector2(27, -29)
-collision_layer = 8
-lock_rotation = true
-freeze = true
+[sub_resource type="CircleShape2D" id="CircleShape2D_rest_charm"]
+radius = 20.0
+
+[node name="SafeSpot" type="Node2D" unique_id=1014013068]
+script = ExtResource("2_script")
 
 [node name="FlagSprite" type="Sprite2D" parent="." unique_id=410961572]
-position = Vector2(-22.000002, 1)
+position = Vector2(5, -28)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("2_flag")
 flip_h = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=809910187]
-position = Vector2(-22, 1)
+[node name="CampBody" type="StaticBody2D" parent="." unique_id=1100710760]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CampBody" unique_id=809910187]
+position = Vector2(5, -28)
 shape = SubResource("RectangleShape2D_safe_spot")
+
+[node name="RestCharm" type="RigidBody2D" parent="." unique_id=1706681129]
+position = Vector2(-29, -15)
+collision_layer = 8
+mass = 0.35
+gravity_scale = 0.8
+lock_rotation = true
+linear_damp = 2.0
+angular_damp = 4.0
+
+[node name="Sprite2D" type="Sprite2D" parent="RestCharm" unique_id=2084252940]
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("5_gem")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RestCharm" unique_id=883755775]
+shape = SubResource("CircleShape2D_rest_charm")

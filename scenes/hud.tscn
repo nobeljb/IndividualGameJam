@@ -42,7 +42,7 @@ corner_radius_bottom_left = 14
 offset_left = 18.0
 offset_top = 18.0
 offset_right = 370.0
-offset_bottom = 206.0
+offset_bottom = 232.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_stats")
 
 [node name="MarginContainer" type="MarginContainer" parent="StatsPanel" unique_id=1185361379]
@@ -60,6 +60,12 @@ theme_override_constants/separation = 6
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Beyond Nginep's End"
+
+[node name="ModeLabel" type="Label" parent="StatsPanel/MarginContainer/VBoxContainer" unique_id=1206176067]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.835294, 0.764706, 0.560784, 1)
+theme_override_font_sizes/font_size = 15
+text = "Fantasy chill | C: craft safe spot"
 
 [node name="StarsLabel" type="Label" parent="StatsPanel/MarginContainer/VBoxContainer" unique_id=355442012]
 layout_mode = 2

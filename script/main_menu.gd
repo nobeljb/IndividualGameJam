@@ -4,6 +4,9 @@ const MAIN_SCENE_PATH := "res://scenes/Main.tscn"
 
 
 func _ready() -> void:
+	var game_flow: GameFlowState = get_node("/root/GameFlow") as GameFlowState
+	if game_flow != null:
+		game_flow.clear_end_result()
 	$CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StartButton.grab_focus()
 
 

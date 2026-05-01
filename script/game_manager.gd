@@ -1,8 +1,6 @@
 class_name GameManager
 extends Node
 
-const MAIN_SCENE_PATH := "res://scenes/Main.tscn"
-const MENU_SCENE_PATH := "res://scenes/MainMenu.tscn"
 const SAFE_SPOT_SCENE := preload("res://scenes/safe_spot.tscn")
 
 @export var starting_lives := 3
@@ -26,19 +24,12 @@ var spawn_position := Vector2.ZERO
 @onready var objective_label: Label = hud.get_node("StatsPanel/MarginContainer/VBoxContainer/ObjectiveLabel") as Label
 @onready var prompt_panel: PanelContainer = hud.get_node("PromptPanel") as PanelContainer
 @onready var prompt_label: Label = hud.get_node("PromptPanel/MarginContainer/PromptLabel") as Label
-@onready var result_panel: PanelContainer = hud.get_node("ResultPanel") as PanelContainer
-@onready var result_title: Label = hud.get_node("ResultPanel/MarginContainer/VBoxContainer/ResultTitle") as Label
-@onready var result_body: Label = hud.get_node("ResultPanel/MarginContainer/VBoxContainer/ResultBody") as Label
-@onready var retry_button: Button = hud.get_node("ResultPanel/MarginContainer/VBoxContainer/ButtonRow/RetryButton") as Button
-@onready var menu_button: Button = hud.get_node("ResultPanel/MarginContainer/VBoxContainer/ButtonRow/MenuButton") as Button
 
 
 func _ready() -> void:
 	add_to_group("game_manager")
 	lives = starting_lives
 	spawn_position = player.global_position
-	retry_button.pressed.connect(_on_retry_button_pressed)
-	menu_button.pressed.connect(_on_menu_button_pressed)
 	update_hud()
 
 
@@ -68,7 +59,7 @@ func craft_safe_spot() -> void:
 	root.add_child(safe_spot)
 	safe_spot.global_position = camp_spawn.global_position
 	set_checkpoint(camp_spawn.global_position + Vector2(0, -36))
-	set_context_prompt("Safe spot aktif. Jika gugur, kamu akan bangun di sini.")
+	set_context_prompt("Safe spot aktif. Rest charm rigidbody jatuh dan menjaga titik nginepmu.")
 	update_hud()
 
 
@@ -102,15 +93,18 @@ func respawn_player() -> void:
 	respawning = false
 
 
-func set_puzzle_solved() -> void:
-	if puzzle_solved or level_finished:
+func set_puzzle_solved(is_solved: bool = true) -> void:
+	if level_finished or puzzle_solved == is_solved:
 		return
 
-	puzzle_solved = true
+	puzzle_solved = is_solved
 	var exit_gate: ExitGate = root.get_node("ExitGate") as ExitGate
 	if exit_gate != null:
-		exit_gate.set_open(true)
-	set_context_prompt("Gerbang terbuka. Lanjutkan ke ujung level.")
+		exit_gate.set_open(puzzle_solved)
+	if puzzle_solved:
+		set_context_prompt("Gerbang terbuka selama sakelar ditekan.")
+	elif context_prompt == "Gerbang terbuka selama sakelar ditekan.":
+		clear_context_prompt()
 	update_hud()
 
 
@@ -152,16 +146,15 @@ func update_hud() -> void:
 	objective_label.text = "Tujuan: %s" % _get_objective_text()
 	prompt_label.text = context_prompt
 	prompt_panel.visible = not context_prompt.is_empty()
-	result_panel.visible = level_finished
 
 
 func _get_objective_text() -> String:
 	if not checkpoint_active:
 		if stars < stars_needed_for_camp:
 			return "Kumpulkan 3 fragmen bintang."
-		return "Pergi ke area kemah dan tekan C."
+		return "Pergi ke area kemah dan tekan C untuk Nginep Santai."
 	if not puzzle_solved:
-		return "Dorong peti ke sakelar untuk membuka gerbang."
+		return "Tahan sakelar dengan peti atau pijakanmu untuk membuka gerbang."
 	return "Masuk ke gerbang akhir untuk menyelesaikan perjalanan."
 
 
@@ -171,23 +164,20 @@ func _show_result(did_win: bool) -> void:
 	player.set_controls_enabled(false)
 	context_prompt = ""
 
+	var result_title: String = ""
+	var result_body: String = ""
+
 	if did_win:
-		result_title.text = "Nginep Tercapai"
-		result_body.text = "Kamu berhasil membuka gerbang akhir dan menemukan tempat istirahat yang damai."
+		result_title = "Nginep Tercapai"
+		result_body = "Perjalanan fantasy chill selesai: fragmen terkumpul, safe spot berdiri, dan gerbang akhir terbuka."
 	else:
-		result_title.text = "Perjalanan Berakhir"
+		result_title = "Perjalanan Berakhir"
 		if checkpoint_active:
-			result_body.text = "Nyawamu habis sebelum mencapai ujung perjalanan. Safe spot terakhir siap membantumu mencoba lagi."
+			result_body = "Nyawamu habis sebelum mencapai ujung perjalanan. Safe spot terakhir siap membantumu mencoba lagi."
 		else:
-			result_body.text = "Nyawamu habis sebelum sempat membangun safe spot. Coba kumpulkan fragmen lebih cepat dan lanjutkan perjalanan."
+			result_body = "Nyawamu habis sebelum sempat membangun safe spot. Coba kumpulkan fragmen lebih cepat dan lanjutkan perjalanan."
 
-	update_hud()
-	retry_button.grab_focus()
-
-
-func _on_retry_button_pressed() -> void:
-	get_tree().change_scene_to_file(MAIN_SCENE_PATH)
-
-
-func _on_menu_button_pressed() -> void:
-	get_tree().change_scene_to_file(MENU_SCENE_PATH)
+	var game_flow: GameFlowState = get_node("/root/GameFlow") as GameFlowState
+	if game_flow != null:
+		game_flow.set_end_result(did_win, stars, lives, checkpoint_active, result_title, result_body)
+		game_flow.open_end_screen()

@@ -12,7 +12,7 @@ func _process(_delta: float) -> void:
 		return
 
 	if game_manager.can_craft_safe_spot():
-		game_manager.set_context_prompt("Tekan C untuk membangun safe spot.")
+		game_manager.set_context_prompt("Tekan C untuk craft safe spot: Nginep Santai di tengah perjalanan.")
 		if Input.is_action_just_pressed("craft_safe_spot"):
 			game_manager.craft_safe_spot()
 	elif game_manager.has_safe_spot():

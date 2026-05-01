@@ -30,13 +30,20 @@ func _on_prompt_area_body_entered(body: Node2D) -> void:
 	if _is_open:
 		game_manager.finish_level()
 	else:
-		game_manager.set_context_prompt("Gerbang masih terkunci. Dorong peti ke sakelar.")
+		game_manager.set_context_prompt("Gerbang masih terkunci. Tekan sakelar dengan tubuhmu atau tahan dengan peti.")
 
 
 func _on_prompt_area_body_exited(body: Node2D) -> void:
 	if not body.is_in_group("player"):
 		return
 
-	var game_manager: GameManager = get_tree().get_first_node_in_group("game_manager") as GameManager
+	if not is_inside_tree():
+		return
+
+	var tree: SceneTree = get_tree()
+	if tree == null:
+		return
+
+	var game_manager: GameManager = tree.get_first_node_in_group("game_manager") as GameManager
 	if game_manager != null and not game_manager.has_level_finished():
 		game_manager.clear_context_prompt()

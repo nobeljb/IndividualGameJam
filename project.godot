@@ -22,6 +22,7 @@ buses/default_bus_layout="uid://inp4ykflpsxm"
 [autoload]
 
 Music="*uid://m1ynjmacj2sc"
+GameFlow="*res://script/game_flow.gd"
 
 [input]
 

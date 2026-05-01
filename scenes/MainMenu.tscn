@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cbj7egmvqc44a"]
 
 [ext_resource type="Script" uid="uid://bf4dwpotolbf" path="res://script/main_menu.gd" id="1_menu"]
+[ext_resource type="Texture2D" path="res://assets/kenney_platformerpack/PNG/Backgrounds/colored_shroom.png" id="2_bg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 bg_color = Color(0.0901961, 0.129412, 0.109804, 0.94)
@@ -31,6 +32,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0509804, 0.0784314, 0.0745098, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1299450219]
+modulate = Color(0.65, 0.78, 0.7, 0.46)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1766458060]
 layout_mode = 1
@@ -65,7 +78,16 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(360, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
-text = "kumpulkan fragmen, bangun tempat singgah, dan temukan spot istirahat terbaik."
+text = "Fantasy chill platformer: kumpulkan fragmen, craft safe spot, lalu temukan spot istirahat terbaik."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="LoopLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1411230317]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.835294, 0.764706, 0.560784, 1)
+theme_override_font_sizes/font_size = 16
+text = "Ambil 3 fragmen -> tekan C di camp -> dorong peti ke sakelar -> buka gerbang."
 horizontal_alignment = 1
 autowrap_mode = 3
 

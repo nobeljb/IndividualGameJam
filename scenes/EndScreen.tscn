@@ -1,0 +1,281 @@
+[gd_scene format=3 uid="uid://br4172p7s4k8i"]
+
+[ext_resource type="Script" uid="uid://dly16atusn4wu" path="res://script/end_screen.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://nr83ld3vcyy0" path="res://assets/kenney_platformerpack/PNG/Backgrounds/colored_land.png" id="2_background"]
+[ext_resource type="Texture2D" uid="uid://d2oqfeki3y7p7" path="res://assets/kenney_platformerpack/PNG/Tiles/doorOpen_mid.png" id="3_hero"]
+[ext_resource type="Texture2D" uid="uid://be4au1wd3v08l" path="res://assets/kenney_abstract-platformer/PNG/Items/blueCrystal.png" id="4_0gmhx"]
+[ext_resource type="Texture2D" uid="uid://b6f74tkmxnenv" path="res://assets/kenney_platformerpack/PNG/HUD/hudHeart_full.png" id="5_heart"]
+[ext_resource type="Texture2D" uid="uid://j6l0pf8gruxu" path="res://assets/kenney_abstract-platformer/PNG/Other/flagGreen_up.png" id="6_flag"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
+bg_color = Color(0.0627451, 0.0980392, 0.0901961, 0.94)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.835294, 0.764706, 0.560784, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+shadow_color = Color(0, 0, 0, 0.3)
+shadow_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_art"]
+bg_color = Color(0.109804, 0.164706, 0.152941, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.737255, 0.682353, 0.501961, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stats"]
+bg_color = Color(0.0941176, 0.141176, 0.129412, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.603922, 0.670588, 0.627451, 0.45)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="EndScreen" type="Control" unique_id=1029897170]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Backdrop" type="TextureRect" parent="." unique_id=1186374004]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_background")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="BackdropTint" type="ColorRect" parent="." unique_id=745440515]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.058824, 0.133333, 0.117647, 0.62)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1260750144]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer" unique_id=1171990341]
+layout_mode = 2
+
+[node name="Card" type="PanelContainer" parent="MarginContainer/CenterContainer" unique_id=1663322341]
+custom_minimum_size = Vector2(760, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/CenterContainer/Card" unique_id=1506313777]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 28
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer/Card/MarginContainer" unique_id=1491849726]
+layout_mode = 2
+theme_override_constants/separation = 22
+
+[node name="GameNameLabel" type="Label" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer" unique_id=505453771]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.835294, 0.764706, 0.560784, 1)
+theme_override_font_sizes/font_size = 18
+text = "Beyond Nginep's End"
+
+[node name="HeroRow" type="HBoxContainer" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer" unique_id=1394089736]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="ArtFrame" type="PanelContainer" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer/HeroRow" unique_id=1569351514]
+custom_minimum_size = Vector2(220, 220)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_art")
+
+[node name="ArtInset" type="MarginContainer" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer/HeroRow/ArtFrame" unique_id=2074223542]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HeroArt" type="TextureRect" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer/HeroRow/ArtFrame/ArtInset" unique_id=1136551668]
+custom_minimum_size = Vector2(180, 180)
+layout_mode = 2
+texture = ExtResource("3_hero")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextColumn" type="VBoxContainer" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer/HeroRow" unique_id=1036077]
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="BadgeLabel" type="Label" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer/HeroRow/TextColumn" unique_id=1572908075]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.921569, 0.85098, 0.6, 1)
+theme_override_font_sizes/font_size = 17
+text = "Perjalanan Selesai"
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer/HeroRow/TextColumn" unique_id=557053276]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.972549, 0.964706, 0.921569, 1)
+theme_override_font_sizes/font_size = 42
+text = "Nginep Tercapai"
+autowrap_mode = 3
+
+[node name="BodyLabel" type="Label" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer/HeroRow/TextColumn" unique_id=877685158]
+custom_minimum_size = Vector2(0, 74)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.854902, 0.878431, 0.862745, 1)
+theme_override_font_sizes/font_size = 18
+text = "Perjalananmu diringkas di sini."
+autowrap_mode = 3
+
+[node name="StatsStrip" type="PanelContainer" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer" unique_id=515322559]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_stats")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer/StatsStrip" unique_id=2056502767]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 16
+
+[node name="StatsRow" type="HBoxContainer" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer/StatsStrip/MarginContainer" unique_id=1208178524]
+layout_mode = 2
+theme_override_constants/separation = 26
+
+[node name="StarsStat" type="HBoxContainer" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer/StatsStrip/MarginContainer/StatsRow" unique_id=536105333]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer/StatsStrip/MarginContainer/StatsRow/StarsStat" unique_id=852395407]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("4_0gmhx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Text" type="VBoxContainer" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer/StatsStrip/MarginContainer/StatsRow/StarsStat" unique_id=554894892]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer/StatsStrip/MarginContainer/StatsRow/StarsStat/Text" unique_id=818937448]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.603922, 0.670588, 0.627451, 1)
+theme_override_font_sizes/font_size = 14
+text = "Fragmen"
+
+[node name="Value" type="Label" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer/StatsStrip/MarginContainer/StatsRow/StarsStat/Text" unique_id=1948426201]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="LivesStat" type="HBoxContainer" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer/StatsStrip/MarginContainer/StatsRow" unique_id=1369956765]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer/StatsStrip/MarginContainer/StatsRow/LivesStat" unique_id=2034587977]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("5_heart")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Text" type="VBoxContainer" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer/StatsStrip/MarginContainer/StatsRow/LivesStat" unique_id=1565272806]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer/StatsStrip/MarginContainer/StatsRow/LivesStat/Text" unique_id=861433608]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.603922, 0.670588, 0.627451, 1)
+theme_override_font_sizes/font_size = 14
+text = "Nyawa Sisa"
+
+[node name="Value" type="Label" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer/StatsStrip/MarginContainer/StatsRow/LivesStat/Text" unique_id=2093687739]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="CampStat" type="HBoxContainer" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer/StatsStrip/MarginContainer/StatsRow" unique_id=363783070]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer/StatsStrip/MarginContainer/StatsRow/CampStat" unique_id=2085116369]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("6_flag")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Text" type="VBoxContainer" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer/StatsStrip/MarginContainer/StatsRow/CampStat" unique_id=206038477]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer/StatsStrip/MarginContainer/StatsRow/CampStat/Text" unique_id=2045924900]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.603922, 0.670588, 0.627451, 1)
+theme_override_font_sizes/font_size = 14
+text = "Safe Spot"
+
+[node name="Value" type="Label" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer/StatsStrip/MarginContainer/StatsRow/CampStat/Text" unique_id=1264817619]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Belum"
+
+[node name="RecapLabel" type="Label" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer" unique_id=1156977450]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.921569, 0.85098, 0.6, 1)
+theme_override_font_sizes/font_size = 17
+text = "Ringkasan singkat perjalananmu tampil di sini."
+autowrap_mode = 3
+
+[node name="ButtonRow" type="HBoxContainer" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer" unique_id=2125228011]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="RetryButton" type="Button" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer/ButtonRow" unique_id=618913073]
+custom_minimum_size = Vector2(220, 52)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+text = "Coba Lagi"
+
+[node name="MenuButton" type="Button" parent="MarginContainer/CenterContainer/Card/MarginContainer/VBoxContainer/ButtonRow" unique_id=102783930]
+custom_minimum_size = Vector2(220, 52)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+text = "Menu Utama"
